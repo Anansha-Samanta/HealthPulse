@@ -45,7 +45,7 @@ One visible consequence: the model's risk-tier prediction and the rule-based KDI
 
 Trained and evaluated on a 6,000-row synthetic dataset (500 users × 12 months, across 6 clinical archetypes see [Data](#data--its-limits) below).
 
-**Random Forest risk classifier** — 5-fold CV accuracy: **0.989 ± 0.005**
+**Random Forest risk classifier** 5-fold CV accuracy: **0.989 ± 0.005**
 
 | Class | Precision | Recall | F1 |
 |---|---|---|---|
