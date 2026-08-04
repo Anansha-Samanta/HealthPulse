@@ -1,11 +1,11 @@
-# 🧪 HealthPulse
+# HealthPulse
 
 **A longitudinal biomarker trend dashboard that turns repeated urine test results into personalized, explainable health signals.**
 
 Most diagnostic tools answer one question: *"Is this value normal right now?"* HealthPulse answers a more useful one: *"Is this changing in a way that matters for **this person**, based on **their own** history?"*
 
 ---
-
+🔗 **Live demo:** 🔗 **Live demo:** [https://healthpulse-fbeuszoaceghgddgxqs9y5.streamlit.app/](https://healthpulse-fbeuszoaceghgddgxqs9y5.streamlit.app/)
 ## Why this exists
 
 Population reference ranges are a blunt instrument. A creatinine level that's alarming for one person can be perfectly normal for another. The clinically meaningful signal is often not the absolute value — it's the *trajectory*: is this person drifting away from their own baseline, and how fast?
@@ -20,14 +20,14 @@ HealthPulse is an end-to-end system that:
 
 ## What it does
 
-- **Tracks 5 biomarkers over time** per user: creatinine, albumin, glucose, pH, specific gravity — plus a computed uACR (urine albumin-to-creatinine ratio)
+- **Tracks 5 biomarkers over time** per user: creatinine, albumin, glucose, pH, specific gravity plus a computed uACR (urine albumin-to-creatinine ratio)
 - **Stages kidney risk** using KDIGO 2022 clinical thresholds (normal / microalbuminuria / macroalbuminuria)
 - **Flags anomalies** with an unsupervised Isolation Forest — catching outlier test results without ever being told what "abnormal" means
 - **Predicts risk tier** with a supervised Random Forest classifier trained on biomarker patterns
 - **Scores deviation from personal baseline** using z-scores computed against each user's own first two months of data, not a population average
 - **Detects transient spikes** with a 3-month sliding window comparison, catching issues that fully resolve before the next test
-- **Generates plain-language alerts** ("Albumin steadily rising — months 10–12, may indicate early kidney stress. Monitor monthly.") rather than raw numbers
-- **Live prediction tool** — enter new biomarker values and see the risk classification, anomaly flag, and KDIGO stage update in real time, with a confidence-broken-down probability gauge
+- **Generates plain-language alerts** ("Albumin steadily rising months 10–12, may indicate early kidney stress. Monitor monthly.") rather than raw numbers
+- **Live prediction tool** enter new biomarker values and see the risk classification, anomaly flag, and KDIGO stage update in real time, with a confidence-broken-down probability gauge
 
 ---
 
@@ -35,7 +35,7 @@ HealthPulse is an end-to-end system that:
 
 The Random Forest classifier is trained **without uACR as an input feature**, even though uACR is exactly what would make the model's job trivial. Why exclude the single most predictive variable?
 
-Because uACR is what the *label itself* is derived from. Feeding it into the model as a feature wouldn't be prediction — it would be the model reading the answer off the same page the question was written on. So the classifier instead has to infer risk from creatinine, albumin, glucose, pH, and specific gravity alone — the way a real screening tool would have to work if it were trying to catch risk *before* someone has an official diagnostic reading.
+Because uACR is what the *label itself* is derived from. Feeding it into the model as a feature wouldn't be prediction it would be the model reading the answer off the same page the question was written on. So the classifier instead has to infer risk from creatinine, albumin, glucose, pH, and specific gravity alone the way a real screening tool would have to work if it were trying to catch risk *before* someone has an official diagnostic reading.
 
 One visible consequence: the model's risk-tier prediction and the rule-based KDIGO check don't always agree on the exact same case. That's not a bug — it's the honest cost of avoiding leakage, and it's a more meaningful result than a model that simply memorized its own label.
 
@@ -43,7 +43,7 @@ One visible consequence: the model's risk-tier prediction and the rule-based KDI
 
 ## Results
 
-Trained and evaluated on a 6,000-row synthetic dataset (500 users × 12 months, across 6 clinical archetypes — see [Data](#data--its-limits) below).
+Trained and evaluated on a 6,000-row synthetic dataset (500 users × 12 months, across 6 clinical archetypes see [Data](#data--its-limits) below).
 
 **Random Forest risk classifier** — 5-fold CV accuracy: **0.989 ± 0.005**
 
@@ -63,9 +63,9 @@ Learning curves show a train/validation gap of ~0.02, with no evidence of overfi
 
 ## Data — and its limits
 
-No public longitudinal urine-wellness dataset exists, so the dataset is synthetically generated — but not arbitrarily. Each of the six condition archetypes (healthy, early CKD, moderate CKD, diabetic risk, CKD + diabetes, UTI episode) has biomarker trajectories grounded in published clinical reference ranges, with realistic within-person variance and condition-appropriate progression over 12 months.
+No public longitudinal urine-wellness dataset exists, so the dataset is synthetically generated but not arbitrarily. Each of the six condition archetypes (healthy, early CKD, moderate CKD, diabetic risk, CKD + diabetes, UTI episode) has biomarker trajectories grounded in published clinical reference ranges, with realistic within-person variance and condition-appropriate progression over 12 months.
 
-**This is a deliberate, disclosed limitation, not an oversight.** Synthetic data lets the pipeline demonstrate correct methodology — leakage avoidance, personal baselining, proper cross-validation — but the resulting accuracy numbers describe how well the models recover a rule-based synthetic label, not how they'd perform on real-world variability. Validating against real biomarker data is the natural next step before any of this could be trusted in a real screening context.
+**This is a deliberate, disclosed limitation, not an oversight.** Synthetic data lets the pipeline demonstrate correct methodology leakage avoidance, personal baselining, proper cross-validation — but the resulting accuracy numbers describe how well the models recover a rule-based synthetic label, not how they'd perform on real-world variability. Validating against real biomarker data is the natural next step before any of this could be trusted in a real screening context.
 
 ---
 
