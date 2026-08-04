@@ -22,7 +22,7 @@ HealthPulse is an end-to-end system that:
 
 - **Tracks 5 biomarkers over time** per user: creatinine, albumin, glucose, pH, specific gravity plus a computed uACR (urine albumin-to-creatinine ratio)
 - **Stages kidney risk** using KDIGO 2022 clinical thresholds (normal / microalbuminuria / macroalbuminuria)
-- **Flags anomalies** with an unsupervised Isolation Forest — catching outlier test results without ever being told what "abnormal" means
+- **Flags anomalies** with an unsupervised Isolation Forest catching outlier test results without ever being told what "abnormal" means
 - **Predicts risk tier** with a supervised Random Forest classifier trained on biomarker patterns
 - **Scores deviation from personal baseline** using z-scores computed against each user's own first two months of data, not a population average
 - **Detects transient spikes** with a 3-month sliding window comparison, catching issues that fully resolve before the next test
@@ -65,7 +65,7 @@ Learning curves show a train/validation gap of ~0.02, with no evidence of overfi
 
 No public longitudinal urine-wellness dataset exists, so the dataset is synthetically generated but not arbitrarily. Each of the six condition archetypes (healthy, early CKD, moderate CKD, diabetic risk, CKD + diabetes, UTI episode) has biomarker trajectories grounded in published clinical reference ranges, with realistic within-person variance and condition-appropriate progression over 12 months.
 
-**This is a deliberate, disclosed limitation, not an oversight.** Synthetic data lets the pipeline demonstrate correct methodology leakage avoidance, personal baselining, proper cross-validation — but the resulting accuracy numbers describe how well the models recover a rule-based synthetic label, not how they'd perform on real-world variability. Validating against real biomarker data is the natural next step before any of this could be trusted in a real screening context.
+**This is a deliberate, disclosed limitation, not an oversight.** Synthetic data lets the pipeline demonstrate correct methodology leakage avoidance, personal baselining, proper cross-validation but the resulting accuracy numbers describe how well the models recover a rule-based synthetic label, not how they'd perform on real-world variability. Validating against real biomarker data is the natural next step before any of this could be trusted in a real screening context.
 
 ---
 
