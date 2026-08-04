@@ -1,0 +1,29 @@
+# Virtual environment — never commit this, requirements.txt is what reproduces it
+venv/
+env/
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Streamlit local config/secrets (if you ever add one)
+.streamlit/secrets.toml
+
+# OS-generated junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor/IDE folders
+.vscode/
+.idea/
+
+# Environment variables, if you ever add any
+.env
