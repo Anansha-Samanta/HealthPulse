@@ -8,7 +8,7 @@ Most diagnostic tools answer one question: *"Is this value normal right now?"* H
 🔗 **Live demo:** [https://healthpulse-fbeuszoaceghgddgxqs9y5.streamlit.app/](https://healthpulse-fbeuszoaceghgddgxqs9y5.streamlit.app/)
 ## Why this exists
 
-Population reference ranges are a blunt instrument. A creatinine level that's alarming for one person can be perfectly normal for another. The clinically meaningful signal is often not the absolute value — it's the *trajectory*: is this person drifting away from their own baseline, and how fast?
+Population reference ranges are a blunt instrument. A creatinine level that's alarming for one person can be perfectly normal for another. The clinically meaningful signal is often not the absolute value it's the *trajectory*: is this person drifting away from their own baseline, and how fast?
 
 HealthPulse is an end-to-end system that:
 1. Models what realistic longitudinal urine-biomarker data looks like across six clinical archetypes, grounded in published reference ranges
@@ -37,7 +37,7 @@ The Random Forest classifier is trained **without uACR as an input feature**, ev
 
 Because uACR is what the *label itself* is derived from. Feeding it into the model as a feature wouldn't be prediction it would be the model reading the answer off the same page the question was written on. So the classifier instead has to infer risk from creatinine, albumin, glucose, pH, and specific gravity alone the way a real screening tool would have to work if it were trying to catch risk *before* someone has an official diagnostic reading.
 
-One visible consequence: the model's risk-tier prediction and the rule-based KDIGO check don't always agree on the exact same case. That's not a bug — it's the honest cost of avoiding leakage, and it's a more meaningful result than a model that simply memorized its own label.
+One visible consequence: the model's risk-tier prediction and the rule-based KDIGO check don't always agree on the exact same case. That's not a bug it's the honest cost of avoiding leakage, and it's a more meaningful result than a model that simply memorized its own label.
 
 ---
 
@@ -57,7 +57,7 @@ Feature importance: **albumin (51%)** dominates, followed by creatinine (17%), p
 
 Learning curves show a train/validation gap of ~0.02, with no evidence of overfitting.
 
-**Isolation Forest anomaly detection** — flags outlier test results at meaningfully different rates across conditions: 91% of moderate-CKD tests flagged as anomalous vs. just 3% of healthy-user tests — showing the model is picking up genuine signal, not noise.
+**Isolation Forest anomaly detection** flags outlier test results at meaningfully different rates across conditions: 91% of moderate-CKD tests flagged as anomalous vs. just 3% of healthy-user tests showing the model is picking up genuine signal, not noise.
 
 ---
 
@@ -99,10 +99,10 @@ HealthPulse/
 
 ## Dashboard pages
 
-1. **Dashboard** — at-a-glance metrics, trend sparklines, latest alert, and a 12-month uACR chart with personal baseline band overlaid
-2. **Biomarker Trends** — deep dive into any single biomarker, with threshold lines, trend slope, and personal z-score chart
-3. **Alerts** — full alert history and anomaly-rate breakdown across all users
-4. **Live Prediction** — enter new biomarker values and get an instant risk classification, anomaly check, and KDIGO stage, with a probability-confidence gauge
+1. **Dashboard** at-a-glance metrics, trend sparklines, latest alert, and a 12-month uACR chart with personal baseline band overlaid
+2. **Biomarker Trends** deep dive into any single biomarker, with threshold lines, trend slope, and personal z-score chart
+3. **Alerts** full alert history and anomaly-rate breakdown across all users
+4. **Live Prediction** enter new biomarker values and get an instant risk classification, anomaly check, and KDIGO stage, with a probability-confidence gauge
 
 ---
 
