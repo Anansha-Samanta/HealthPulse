@@ -5,7 +5,7 @@
 Most diagnostic tools answer one question: *"Is this value normal right now?"* HealthPulse answers a more useful one: *"Is this changing in a way that matters for **this person**, based on **their own** history?"*
 
 ---
-🔗 **Live demo:** 🔗 **Live demo:** [https://healthpulse-fbeuszoaceghgddgxqs9y5.streamlit.app/](https://healthpulse-fbeuszoaceghgddgxqs9y5.streamlit.app/)
+🔗 **Live demo:** [https://healthpulse-fbeuszoaceghgddgxqs9y5.streamlit.app/](https://healthpulse-fbeuszoaceghgddgxqs9y5.streamlit.app/)
 ## Why this exists
 
 Population reference ranges are a blunt instrument. A creatinine level that's alarming for one person can be perfectly normal for another. The clinically meaningful signal is often not the absolute value — it's the *trajectory*: is this person drifting away from their own baseline, and how fast?
