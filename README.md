@@ -61,7 +61,7 @@ Learning curves show a train/validation gap of ~0.02, with no evidence of overfi
 
 ---
 
-## Data — and its limits
+## Data and its limits
 
 No public longitudinal urine-wellness dataset exists, so the dataset is synthetically generated but not arbitrarily. Each of the six condition archetypes (healthy, early CKD, moderate CKD, diabetic risk, CKD + diabetes, UTI episode) has biomarker trajectories grounded in published clinical reference ranges, with realistic within-person variance and condition-appropriate progression over 12 months.
 
@@ -138,4 +138,4 @@ To regenerate the dataset, retrain the models, or inspect the full analysis, ope
 
 ## A note on how this project was built
 
-Every modeling choice here — the leakage exclusion, the personal-baseline approach over population thresholds, the sliding-window anomaly detection — was a deliberate design decision, not a default. Where the pipeline has real limits (synthetic data, a rule-based ground truth), they're called out directly rather than glossed over. I'd rather show accurate, well-reasoned work with disclosed limitations than inflated numbers without context.
+Every modeling choice here the leakage exclusion, the personal-baseline approach over population thresholds, the sliding-window anomaly detection was a deliberate design decision, not a default. Where the pipeline has real limits (synthetic data, a rule-based ground truth), they're called out directly rather than glossed over. I'd rather show accurate, well-reasoned work with disclosed limitations than inflated numbers without context.
